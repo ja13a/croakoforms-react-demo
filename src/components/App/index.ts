@@ -1,1 +1,3 @@
-export { App as default } from './App'
+import './app.scss';
+
+export { App as default } from './App';
