@@ -1,14 +1,10 @@
 $base-color: #000000;
 
 .app {
-	background-color: $base-color;
+  align-items: baseline;
+  width: 0px;
+  height: 100px;
+  font-weight: 400;
+  background-color: #000000;
   filter: blur(4px);
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  height: 0;
-  display: flex;
-  background: linear-gradient(#e98a00, #f5aa2f);
 }
