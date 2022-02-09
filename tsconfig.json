@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "CommonJS",
+		"jsx": "react",
+		"inlineSourceMap": true,
+		"outDir": "./dist",
+		"removeComments": true,
+		"allowSyntheticDefaultImports": true,
+		"preserveConstEnums": true
+	},
+	"include": [
+		"./src/**/*"
+	]
+}
