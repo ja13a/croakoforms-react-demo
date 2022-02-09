@@ -5,5 +5,5 @@ interface IAppProps {
 }
 
 export const App: React.FC<IAppProps> = ({ pharse }) => {
-	return <div>{pharse}</div>
+	return <div className='app'>{pharse}</div>
 }
