@@ -7,9 +7,13 @@
 		"outDir": "./dist",
 		"removeComments": true,
 		"allowSyntheticDefaultImports": true,
-		"preserveConstEnums": true
+		"preserveConstEnums": true,
+		"noImplicitAny": true,
 	},
 	"include": [
 		"./src/**/*"
-	]
+	],
+	"exclude": [
+		"node_modules"
+	],
 }

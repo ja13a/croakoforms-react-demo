@@ -2,4 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/App';
 
-ReactDOM.render(<App pharse='lol'/>, document.getElementById('root'));
+ReactDOM.render(
+  <App pharse="lol"/>,
+  document.getElementById('root')
+);
