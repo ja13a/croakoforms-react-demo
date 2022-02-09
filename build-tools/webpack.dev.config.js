@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -28,16 +30,30 @@ module.exports = {
         exclude: '/node_modules',
         loader: 'babel-loader',
       },
-      // {
-      //   test: /\.css$/i,
-      //   use: ["style-loader", "css-loader"],
-      // },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  autoprefixer({
+                    overrideBrowserslist: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9',
+                    ],
+                  })
+                ],
+                sourceMap: true
+              }
+            }
+          }
         ],
       }
     ]
@@ -45,6 +61,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-    })
+    }),
+    new StylelintPlugin(),
   ]
 }
