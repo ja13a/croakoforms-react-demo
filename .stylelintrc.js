@@ -19,7 +19,7 @@ module.exports = {
   }
 }
 
-const sortingOrder = [
+var sortingOrder = [
   'content',
   'quotes',
 
