@@ -1,24 +1,90 @@
-import React from 'react';
+// import React from 'react';
 
 import headerIcon from '../assets/svg/heading-solid.svg';
 import paragraphIcon from '../assets/svg/paragraph-solid.svg';
+import inputIcon from '../assets/svg/pen-to-square-solid.svg';
+import buttonIcon from '../assets/svg/b-solid.svg';
+import textareaIcon from '../assets/svg/align-justify-solid.svg';
+import fileUploadIcon from '../assets/svg/file-import-solid.svg';
+import checkboxGroupIcon from '../assets/svg/square-check-solid.svg';
+import radioGroupIcon from '../assets/svg/circle-dot-solid.svg';
+import selectIcon from '../assets/svg/caret-right-solid.svg';
 
 export interface ICroakoformsElement {
-  icon: string;
+  icon: string; // string т.к. нельзя src img-элемента назначить HTMLSVGElement
   title: string,
-  type: React.ElementType;
+  type: CroakoformsElementsType;
 }
+
+enum CroakoformsElementsType {
+  header = 'header',
+  paragraph = 'paragraph',
+  input = 'input',
+  button = 'button',
+  textarea = 'textarea',
+  fileUpload = 'fileUpload',
+  checkboxGroup = 'checkboxGroup',
+  radioGroup = 'radioGroup',
+  select = 'select'
+}
+
+const {
+  header,
+  paragraph,
+  input,
+  button,
+  textarea,
+  fileUpload,
+  checkboxGroup,
+  radioGroup,
+  select
+} = CroakoformsElementsType;
 
 export const sidebarElementsData: ICroakoformsElement[] = [
   {
     icon: headerIcon,
     title: 'Header',
-    type: 'h1'
+    type: header
   },
   {
     icon: paragraphIcon,
     title: 'Paragraph',
-    type: 'p'
+    type: paragraph
+  },
+  {
+    icon: inputIcon,
+    title: 'Input',
+    type: input
+  },
+  {
+    icon: buttonIcon,
+    title: 'Button',
+    type: button
+  },
+  {
+    icon: textareaIcon,
+    title: 'Text Area',
+    type: textarea
+  },
+  {
+    icon: fileUploadIcon,
+    title: 'File Upload',
+    type: fileUpload
+  },
+  {
+    icon: checkboxGroupIcon,
+    title: 'Checkbox Group',
+    type: checkboxGroup
+  },
+  {
+    icon: radioGroupIcon,
+    title: 'Radio Group',
+    type: radioGroup
+  },
+  {
+    icon: selectIcon,
+    title: 'Select',
+    type: select
   }
 ];
 

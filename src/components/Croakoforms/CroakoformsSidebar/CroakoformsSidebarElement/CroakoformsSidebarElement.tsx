@@ -7,7 +7,7 @@ export class CroakoformsSidebarElement extends React.Component<ICroakoformsEleme
     const { icon, title, type } = this.props;
 
     return (
-      <div className="croakoforms-sidebar__element">
+      <div draggable={true} className="croakoforms-sidebar__element">
         <img className="croakoforms-sidebar__element-icon" src={icon}/>
         <span className="croakoforms-sidebar__element-title">{title}</span>
       </div>
