@@ -1,0 +1,88 @@
+@import '../croakoforms.styles.constants';
+
+$sidebar-border: 1px solid black;
+$per-element-margin: 3px;
+
+.croakoforms-sidebar {
+  flex: 1 1 155px;
+  width: 20%;
+  height: fit-content;
+  margin-bottom: auto;
+
+  &__buttons-wrapper:first-child {
+    margin-bottom: $per-element-margin;
+  }
+
+  &__buttons-wrapper:last-child {
+    margin-top: $per-element-margin;
+  }
+
+  &__elements-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border-radius: $border-radius;
+    border: $sidebar-border;
+    box-shadow: 0px 0px 24px 6px rgba(34, 60, 80, 0.2);
+  }
+
+  &__element {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+  }
+
+  &__element:first-child {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__element:not(:first-child) {
+    border-top: $sidebar-border;
+  }
+
+  &__element:last-child {
+    border-radius: 0 0 $border-radius $border-radius;
+  }
+
+  &__element-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__element-title {
+    font-weight: 400;
+  }
+
+  &__button {
+    background-color: white;
+    border: $sidebar-border;
+    padding: 8px 10px;
+  }
+
+  &__button:first-child {
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+
+  &__button:last-child {
+    border-radius: 0 $border-radius $border-radius 0;
+    border-left: none;
+  }
+}
+
+.undo-button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: black;
+  mask: url('../assets/svg/undo-solid.svg');
+}
+
+.redo-button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: black;
+  mask: url('../assets/svg/redo-solid.svg');
+}

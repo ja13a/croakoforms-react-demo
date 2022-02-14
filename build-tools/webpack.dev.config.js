@@ -35,7 +35,6 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -53,14 +52,30 @@ module.exports = {
                 sourceMap: true
               }
             }
-          }
+          },
+          'sass-loader'
         ],
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
+        type: 'asset/resource',
+        generator: {
+          filename: './assets/img/[name][hash:8].[ext]',
+        }
+      },
+      {
+        test: /\.(woff|woff2)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: './assets/fonts/[name][hash:8].[ext]',
+        }
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      favicon: './src/assets/svg/frog-solid.svg',
     }),
     new StylelintPlugin(),
   ]

@@ -16,6 +16,11 @@ module.exports = {
     'declaration-no-important': true,
     'no-duplicate-selectors': true,
     'order/properties-order': sortingOrder,
+    'at-rule-no-unknown': null,
+    'scss/at-rule-no-unknown': true,
+    'scss/at-import-partial-extension': 'always',
+    'scss/at-import-partial-extension-blacklist': ['.scss'],
+    'scss/selector-no-redundant-nesting-selector': true,
   }
 }
 

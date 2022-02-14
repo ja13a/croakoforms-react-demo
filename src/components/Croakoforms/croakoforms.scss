@@ -1,0 +1,10 @@
+@import './croakoforms.styles.constants.scss';
+@import './croakoforms.fonts.scss';
+
+.croakoforms {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
