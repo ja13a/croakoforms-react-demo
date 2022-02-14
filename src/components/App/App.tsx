@@ -1,13 +1,10 @@
 import React from 'react';
+import Croakoforms from '../Croakoforms';
 
-interface IAppProps {
-  pharse: string
-}
-
-export const App: React.FC<IAppProps> = ({ pharse }) => {
+export const App: React.FC = () => {
   return (
     <div className="app">
-      {pharse}
+      <Croakoforms />
     </div>
   );
 };
