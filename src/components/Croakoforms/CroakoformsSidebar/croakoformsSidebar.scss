@@ -4,7 +4,10 @@ $sidebar-border: 1px solid black;
 $per-element-margin: 3px;
 
 .croakoforms-sidebar {
-  width: 200px;
+  flex: 1 1 155px;
+  width: 20%;
+  height: fit-content;
+  margin-bottom: auto;
 
   &__buttons-wrapper:first-child {
     margin-bottom: $per-element-margin;

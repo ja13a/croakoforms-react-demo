@@ -1,0 +1,23 @@
+@import '../croakoforms.styles.constants.scss';
+
+.croakoforms-form-view {
+  position: relative;
+  flex: 5 1 235px;
+  min-height: 500px;
+  border-radius: $border-radius;
+  margin-right: 5px;
+
+  &:empty {
+    border: 2px dotted white;
+    background-color: rgba(245, 245, 245, 0.11);
+  }
+
+  &:empty::after {
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+}

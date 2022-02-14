@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 
 import headerIcon from '../assets/svg/heading-solid.svg';
 import paragraphIcon from '../assets/svg/paragraph-solid.svg';
@@ -13,10 +13,34 @@ import selectIcon from '../assets/svg/caret-right-solid.svg';
 export interface ICroakoformsElement {
   icon: string; // string т.к. нельзя src img-элемента назначить HTMLSVGElement
   title: string,
-  type: CroakoformsElementsType;
+  type: CroakoformsElementsName;
 }
 
-enum CroakoformsElementsType {
+export interface IFormViewElement {
+  elementName: string;
+  require?: boolean;
+  className?: string;
+  name?: string;
+  type: {
+    currentType: React.ElementType,
+    changable: boolean,
+    options?: string[]
+  },
+  subtype?: {
+    currentSubype: string,
+    changable: boolean,
+    options?: string[]
+  },
+  label?: string;
+  value?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  disabled?: boolean;
+  // ..........
+}
+
+enum CroakoformsElementsName {
   header = 'header',
   paragraph = 'paragraph',
   input = 'input',
@@ -38,7 +62,7 @@ const {
   checkboxGroup,
   radioGroup,
   select
-} = CroakoformsElementsType;
+} = CroakoformsElementsName;
 
 export const sidebarElementsData: ICroakoformsElement[] = [
   {
@@ -87,6 +111,10 @@ export const sidebarElementsData: ICroakoformsElement[] = [
     type: select
   }
 ];
+
+const formViewElementsData: IFormViewElement[] = [
+
+]
 
 // {
 //   icon: 'fa-heading',
