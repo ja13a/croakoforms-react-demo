@@ -20,4 +20,39 @@
     text-align: center;
     color: white;
   }
+
+  &__element-label {
+    display: block;
+    width: fit-content;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  &__element {
+    background-color: white;
+    position: relative;
+    padding: 15px 10px 10px 10px;
+    border: $default-border;
+  }
+
+  &__element:first-child {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__element:last-child {
+    border-radius: 0 0 $border-radius $border-radius;
+  }
+
+  &__element:not(:first-child) {
+    border-top: 0;
+  }
+
+  &__element:only-child {
+    border-radius: $border-radius;
+  }
+
+  &__textarea {
+    display: block;
+    width: calc(100% - 8px);
+  }
 }

@@ -16,7 +16,9 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'max-len': ['error', { 'code': 120 }],
     'comma-dangle': ['error', 'never'],
-    'no-trailing-spaces': ['error', { 'skipBlankLines': false }]
+    'no-trailing-spaces': ['error', { 'skipBlankLines': false }],
+    'no-empty-function': ['error', { 'allow': ['arrowFunctions'] }],
+    '@typescript-eslint/no-empty-function': 'off'
   },
   ignorePatterns: [
     '/build-tools/*'

@@ -4,7 +4,7 @@
   "main": "src/index.tsx",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config build-tools/webpack.dev.config.js --mode development",
+    "dev": "webpack-dev-server --config build-tools/webpack.dev.config.js --mode development --https",
     "build": "webpack --config build-tools/webpack.dev.config.js --mode production"
   },
   "devDependencies": {

@@ -2,13 +2,14 @@ import React from 'react';
 
 import headerIcon from '../assets/svg/heading-solid.svg';
 import paragraphIcon from '../assets/svg/paragraph-solid.svg';
-import inputIcon from '../assets/svg/pen-to-square-solid.svg';
 import buttonIcon from '../assets/svg/b-solid.svg';
 import textareaIcon from '../assets/svg/align-justify-solid.svg';
 import fileUploadIcon from '../assets/svg/file-import-solid.svg';
 import checkboxGroupIcon from '../assets/svg/square-check-solid.svg';
 import radioGroupIcon from '../assets/svg/circle-dot-solid.svg';
 import selectIcon from '../assets/svg/caret-right-solid.svg';
+import textInputIcon from '../assets/svg/font-solid.svg';
+import numberInputIcon from '../assets/svg/hashtag-solid.svg';
 
 export interface ICroakoformsElement {
   icon: string; // string т.к. нельзя src img-элемента назначить HTMLSVGElement
@@ -17,33 +18,50 @@ export interface ICroakoformsElement {
 }
 
 export interface IFormViewElement {
-  elementName: string;
-  require?: boolean;
-  className?: string;
+  require: boolean;
+  className: string;
+  id: string;
   name?: string;
+  label?: string;
+  value?: string;
+  disabled?: boolean;
+  innerText?: string;
   type: {
     currentType: React.ElementType,
     changable: boolean,
-    options?: string[]
+    options?: React.ElementType[]
   },
   subtype?: {
-    currentSubype: string,
+    currentSubtype: string,
     changable: boolean,
     options?: string[]
   },
-  label?: string;
-  value?: string;
-  min?: number;
-  max?: number;
-  step?: number;
-  disabled?: boolean;
-  // ..........
+  elementProperties?: {
+    min?: number;
+    max?: number;
+    step?: number;
+    maxLength?: number;
+    minLength?: number;
+    rows?: number;
+    cols?: number;
+    autoComplete?: 'on' | 'off';
+    spellCheck?: 'true' | 'default' | 'false';
+    wrap?: 'hard' | 'soft';
+    pattern?: string;
+    placeholder?: string;
+    accept?: string;
+  }
+}
+
+interface IFormViewElementsData {
+  [elementType: string]: IFormViewElement,
 }
 
 enum CroakoformsElementsName {
   header = 'header',
   paragraph = 'paragraph',
-  input = 'input',
+  textInput = 'textInput',
+  numberInput = 'numberInput',
   button = 'button',
   textarea = 'textarea',
   fileUpload = 'fileUpload',
@@ -55,7 +73,8 @@ enum CroakoformsElementsName {
 const {
   header,
   paragraph,
-  input,
+  textInput,
+  numberInput,
   button,
   textarea,
   fileUpload,
@@ -76,9 +95,14 @@ export const sidebarElementsData: ICroakoformsElement[] = [
     type: paragraph
   },
   {
-    icon: inputIcon,
-    title: 'Input',
-    type: input
+    icon: textInputIcon,
+    title: 'Text Input',
+    type: textInput
+  },
+  {
+    icon: numberInputIcon,
+    title: 'Number Input',
+    type: numberInput
   },
   {
     icon: buttonIcon,
@@ -112,67 +136,142 @@ export const sidebarElementsData: ICroakoformsElement[] = [
   }
 ];
 
-const formViewElementsData: IFormViewElement[] = [
+export const formViewElementsData: IFormViewElementsData = {
+  header: {
+    require: false,
+    className: '',
+    id: '',
+    innerText: 'Header',
+    type: {
+      changable: true,
+      currentType: 'h1',
+      options: [
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6'
+      ]
+    }
+  },
+  paragraph: {
+    require: false,
+    className: '',
+    id: '',
+    innerText: 'Paragraph',
+    type: {
+      changable: false,
+      currentType: 'p'
+    }
+  },
+  textarea: {
+    require: false,
+    className: 'croakoforms-form-view__textarea',
+    id: '',
+    label: 'Text Area',
+    type: {
+      changable: false,
+      currentType: 'textarea'
+    },
+    elementProperties: {
+      rows: 4,
+      spellCheck: 'true',
+      wrap: 'soft',
+      placeholder: 'Text Area placeholder'
+    }
+  },
+  textInput: {
+    require: false,
+    className: '',
+    id: '',
+    label: 'Text Input',
+    type: {
+      changable: false,
+      currentType: 'input'
+    },
+    subtype: {
+      currentSubtype: 'text',
+      changable: true,
+      options: [
+        'text',
+        'email'
+      ]
+    },
+    elementProperties: {
+      maxLength: 56,
+      minLength: 0,
+      pattern: '',
+      spellCheck: 'true',
+      autoComplete: 'on',
+      placeholder: 'Text Input placeholder'
+    }
+  },
+  numberInput: {
+    require: false,
+    className: '',
+    id: '',
+    label: 'Number Input',
+    type: {
+      changable: false,
+      currentType: 'input'
+    },
+    subtype: {
+      currentSubtype: 'number',
+      changable: true,
+      options: [
+        'number',
+        'range',
+        'tel'
+      ]
+    },
+    elementProperties: {
+      step: 1,
+      min: 0,
+      max: 100,
+      placeholder: 'Number Input placeholder'
+    }
+  },
+  button: {
+    require: false,
+    className: '',
+    id: '',
+    label: 'Button',
+    type: {
+      changable: false,
+      currentType: 'button'
+    },
+    subtype: {
+      currentSubtype: 'button',
+      changable: true,
+      options: [
+        'button',
+        'reset',
+        'submit'
+      ]
+    },
+    elementProperties: {},
+    innerText: 'Button'
+  },
+  fileUpload: {
+    require: false,
+    className: '',
+    id: '',
+    label: 'File Upload',
+    type: {
+      currentType: 'input',
+      changable: false
+    },
+    subtype: {
+      currentSubtype: 'file',
+      changable: false
+    },
+    elementProperties: {
+      accept: ''
+    }
+  }
+};
 
-]
-
-// {
-//   icon: 'fa-heading',
-//   title: 'Header',
-//   formElementName: 'header',
-//   inner: 'Header',
-//   type: 'h1',
-// },
-// {
-//   icon: 'fa-paragraph',
-//   title: 'Paragraph',
-//   formElementName: 'paragraph',
-//   inner: 'Paragraph',
-//   type: 'p',
-// },
-// {
-//   icon: 'fa-edit',
-//   title: 'Input',
-//   formElementName: 'input',
-//   label: 'Input',
-//   type: 'input',
-//   subtype: 'text',
-//   value: '',
-//   placeholder: '',
-//   min: 0,
-//   max: 56,
-//   maxlength: '',
-//   pattern: '',
-//   required: false
-// },
-// {
-//   icon: 'fa-bold',
-//   title: 'Button',
-//   formElementName: 'button',
-//   label: 'Button',
-//   inner: 'Button',
-//   type: 'button',
-//   subtype: 'button',
-//   value: '',
-// },
-// {
-//   icon: 'fa-align-justify',
-//   title: 'Text Area',
-//   formElementName: 'textarea',
-//   label: 'Text Area',
-//   type: 'textarea',
-//   rows: 4,
-//   disabled: false,
-//   required: false,
-// },
-// {
-//   icon: 'fa-file',
-//   title: 'File Upload',
-//   formElementName: 'file-upload',
-//   label: 'File Upload',
-//   type: 'input',
-//   subtype: 'file',
-// },
 // {
 //   icon: 'fa-check-square',
 //   title: 'Checkbox Group',
